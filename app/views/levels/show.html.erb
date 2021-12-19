@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @level.name %>
+</p>
+
+<p>
+  <strong>Gamemode:</strong>
+  <%= @level.gamemode %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @level.image_url %>
+</p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @level.game %>
+</p>
+
+<%= link_to 'Edit', edit_level_path(@level) %> |
+<%= link_to 'Back', levels_path %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @game.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @game.description %>
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gamemode</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @levels.each do |level| %>
+      <tr>
+        <td><%= level.name %></td>
+        <td><%= level.gamemode %></td>
+        <td><%= link_to 'Show', level %></td>
+        <td><%= link_to 'Edit', edit_level_path(level) %></td>
+        <td><%= link_to 'Destroy', level, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>
