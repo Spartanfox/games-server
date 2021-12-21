@@ -1,6 +1,5 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
-
   # GET /games or /games.json
   def index
     @games = Game.all
@@ -8,7 +7,7 @@ class GamesController < ApplicationController
 
   # GET /games/1 or /games/1.json
   def show
-    @levels = @game.levels
+   # @levels = @game.levels
   end
 
   # GET /games/new
@@ -61,7 +60,12 @@ class GamesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game
-      @game = Game.find(params[:id])
+      if((params[:id]).to_i.to_s == params[:id])
+        @game = Game.find(params[:id])
+      else
+        @game = Game.find_by_name(params[:id])
+      end
+
     end
 
     # Only allow a list of trusted parameters through.

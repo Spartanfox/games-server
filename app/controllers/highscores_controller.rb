@@ -12,7 +12,8 @@ class HighscoresController < ApplicationController
 
   # GET /highscores/new
   def new
-    @highscore = Highscore.new
+    @level = Level.find(params[:level_id])
+    @highscore = @level.highscores.build
   end
 
   # GET /highscores/1/edit
@@ -21,11 +22,12 @@ class HighscoresController < ApplicationController
 
   # POST /highscores or /highscores.json
   def create
+
     @highscore = Highscore.new(highscore_params)
 
     respond_to do |format|
       if @highscore.save
-        format.html { redirect_to highscore_url(@highscore), notice: "Highscore was successfully created." }
+        format.html { redirect_to @highscore.level, notice: "Highscore was successfully created." }
         format.json { render :show, status: :created, location: @highscore }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -60,6 +62,7 @@ class HighscoresController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_highscore
+
       @highscore = Highscore.find(params[:id])
     end
 

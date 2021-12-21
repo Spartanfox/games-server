@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% @levels.each do |level| %>
+    <% @game.levels.each do |level| %>
       <tr>
         <td><%= level.name %></td>
         <td><%= level.gamemode %></td>
@@ -30,5 +30,7 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'New level', new_game_level_path(@game) %> |
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
